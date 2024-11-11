@@ -37,7 +37,7 @@ function getConfig() {
 		if (error instanceof z.ZodError) {
 			console.error(prefixError, error.errors);
 		} else {
-			console.log(prefixError, error);
+			console.error(prefixError, error);
 		}
 
 		process.exit(1);
