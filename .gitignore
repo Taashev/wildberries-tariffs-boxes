@@ -9,3 +9,5 @@ build
 config.yaml
 
 credentials.json
+
+mockData
