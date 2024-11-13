@@ -8,6 +8,8 @@ config();
 // получаем переменные окружения, валидируем и создаем обьект конфигурации
 function getConfig() {
 	const configSchema = z.object({
+		nodeEnv: z.enum(['production', 'development', 'testing']),
+
 		wbKey: z.string(),
 
 		db: z.object({
@@ -21,6 +23,8 @@ function getConfig() {
 
 	try {
 		return configSchema.parse({
+			nodeEnv: process.env.NODE_ENV,
+
 			wbKey: process.env.WB_KEY,
 
 			db: {

@@ -1,3 +1,7 @@
+import { appConfig } from '../../app.config';
+import { WB_COMMON_API } from '../../utils/constants';
+import { FullApiWarehousesResponseDTO } from '../dto/warehouse/full-api-warehouses-response.dto';
+
 import { WBApi } from './base.api';
 
 class WBCommonApi extends WBApi {
@@ -9,7 +13,9 @@ class WBCommonApi extends WBApi {
 	 *
 	 * @param date - дата в формате 'ГГГГ-ММ-ДД'
 	 */
-	async getTariffsBoxByDate(date: string) {
+	async getTariffsBoxByDate(
+		date: string,
+	): Promise<FullApiWarehousesResponseDTO> {
 		return await fetch(this._baseUrl + `/api/v1/tariffs/box?date=${date}`, {
 			headers: {
 				Authorization: this._key,
@@ -18,7 +24,4 @@ class WBCommonApi extends WBApi {
 	}
 }
 
-export const wbCommonApi = new WBCommonApi(
-	'https://common-api.wildberries.ru',
-	process.env.WB_KEY ?? '',
-);
+export const wbCommonApi = new WBCommonApi(WB_COMMON_API, appConfig.wbKey);
