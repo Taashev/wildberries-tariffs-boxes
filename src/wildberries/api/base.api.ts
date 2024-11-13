@@ -17,7 +17,7 @@ export class WBApi {
 			return await response.json();
 		}
 
-		return response.json().then((error: any) => {
+		return response.json().then((error) => {
 			throw error;
 		});
 	}
