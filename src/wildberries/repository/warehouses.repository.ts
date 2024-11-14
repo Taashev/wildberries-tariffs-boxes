@@ -19,6 +19,7 @@ export class WBWarehousesRepository {
 			return await this._dbClient
 				.select<WarehouseDbDto[]>(select)
 				.from(this._table)
+				.orderBy('date', 'asc')
 				.orderBy(sortedParam.columnName, sortedParam.order);
 		} catch (error) {
 			console.error(error);
